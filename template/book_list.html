@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{%block content %}
+
+<a href="{% url 'upload_book' %}"><input type="button" class="btn btn-success" value="Upload Files"></a>
+
+<br /><br />
+
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Book Title</th>
+        <th scope="col">Book Author</th>
+        <th scope="col">Show</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for data in books %}
+      <tr>
+        <th scope="row">{{data.title}}</th>
+        <td>{{data.author}}</td>
+        <td><a href="{{data.pdf.url}}"><input type="submit" class="btn btn-primary" value="Show"></a></td>
+        
+
+        <td>
+            <form method="POST" action="{% url 'book_delete' data.pk %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete"></td>
+            </form>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock%}

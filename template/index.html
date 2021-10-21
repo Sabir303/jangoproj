@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/test.css' %}">
+</head>
+<body background="{% static '/backgr.jpeg' %}">
+   
+<h1>Home</h1>
+
+<form action="/result/" method="post">
+    {% csrf_token %}
+    Enter First Number: <input type="text" name="num1"> <br /><br />
+    Enter Second Number: <input type="text" name="num2"><br /><br />
+    <input type="submit" value="Add">
+</form>
+
+<form action="/contact/" >
+    {% csrf_token %}
+
+
+    Name  :<input type="text" name="emname"> <br /><br />
+    Email :<input type="text" name="emmail"> <br /><br />
+    <input type="submit" value="Save"> <br /><br />
+
+</form>
+
+<img src="{% static '/PPLogoj1.jpg' %}" height="10%" width="10%" />
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <input type="submit" value="Upload">
+</form>
+
+{% endblock %}

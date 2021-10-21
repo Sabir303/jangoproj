@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Email Sending</h1>
+
+<form method="post" action="{% url 'send_email' %}">
+    {% csrf_token %}
+
+   
+    Message <input type="text" name="message" placeholder="Rnter Message here..."><br /><br />
+    <input type="submit" value="Send">
+</form>
+
+{% endblock%}
